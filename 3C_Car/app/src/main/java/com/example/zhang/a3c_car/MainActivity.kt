@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.Toast
 import com.example.zhang.a3c_car.R.layout.activity_main
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : Activity(){
@@ -55,7 +56,6 @@ class MainActivity : Activity(){
                 }
                 else -> return@setOnTouchListener false
             }
-
             return@setOnTouchListener true
         }
         FlipButton.setOnTouchListener {
@@ -71,7 +71,66 @@ class MainActivity : Activity(){
                 }
                 else -> return@setOnTouchListener false
             }
+            return@setOnTouchListener true
+        }
+        CameraButton.setOnTouchListener {
+            view, event ->
+            val action = event.action
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
 
+                }
+                MotionEvent.ACTION_UP -> {
+                    var intent = Intent(this,CameraActivity::class.java)
+                    startActivity(intent)
+                }
+                else -> return@setOnTouchListener false
+            }
+            return@setOnTouchListener true
+        }
+        CameraButton.setOnTouchListener {
+            view, event ->
+            val action = event.action
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+
+                }
+                MotionEvent.ACTION_UP -> {
+                    var intent = Intent(this,CameraActivity::class.java)
+                    startActivity(intent)
+                }
+                else -> return@setOnTouchListener false
+            }
+            return@setOnTouchListener true
+        }
+        ServerButton.setOnTouchListener {
+            view, event ->
+            val action = event.action
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+
+                }
+                MotionEvent.ACTION_UP -> {
+                    var intent = Intent(this,ServerActivity::class.java)
+                    startActivity(intent)
+                }
+                else -> return@setOnTouchListener false
+            }
+            return@setOnTouchListener true
+        }
+        ClientButton.setOnTouchListener {
+            view, event ->
+            val action = event.action
+            when (action) {
+                MotionEvent.ACTION_DOWN -> {
+
+                }
+                MotionEvent.ACTION_UP -> {
+                    var intent = Intent(this,ClientActivity::class.java)
+                    startActivity(intent)
+                }
+                else -> return@setOnTouchListener false
+            }
             return@setOnTouchListener true
         }
     }
@@ -82,9 +141,14 @@ class MainActivity : Activity(){
     private fun initPermission() {
         val permissions = arrayOf<String>(Manifest.permission.RECORD_AUDIO,
                 Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.CHANGE_NETWORK_STATE,
+                Manifest.permission.CHANGE_WIFI_STATE,
                 Manifest.permission.INTERNET,
                 Manifest.permission.READ_PHONE_STATE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.CAMERA
+        )
 
         val toApplyList = ArrayList<String>()
 
